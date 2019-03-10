@@ -25753,7 +25753,7 @@ function (_React$Component) {
         className: "github-profile"
       }, _react.default.createElement("img", {
         src: profile.avatar_url,
-        alt: "profile pic"
+        alt: "profile"
       }), _react.default.createElement("div", {
         className: "info"
       }, _react.default.createElement("div", {
@@ -25783,29 +25783,73 @@ var _Card = _interopRequireDefault(require("./Card"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var testData = [{
-  name: "Dan Abramov",
-  avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4",
-  company: "@facebook"
-}, {
-  name: "Sophie Alpert",
-  avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4",
-  company: "Humu"
-}, {
-  name: "Sebastian Markbage",
-  avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4",
-  company: "Facebook"
-}];
-
 var CardList = function CardList(props) {
-  return _react.default.createElement("div", null, testData.map(function (profile) {
+  return _react.default.createElement("div", null, props.profiles.map(function (profile) {
     return _react.default.createElement(_Card.default, profile);
   }));
 };
 
 var _default = CardList;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Card":"Card.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Card":"Card.js"}],"Form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Form =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Form, _React$Component);
+
+  function Form() {
+    _classCallCheck(this, Form);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Form).apply(this, arguments));
+  }
+
+  _createClass(Form, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("form", {
+        action: ""
+      }, _react.default.createElement("input", {
+        type: "text",
+        placeholder: "Github username"
+      }), _react.default.createElement("button", null, "Add card"));
+    }
+  }]);
+
+  return Form;
+}(_react.default.Component);
+
+var _default = Form;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -25886,6 +25930,8 @@ var _reactDom = require("react-dom");
 
 var _CardList = _interopRequireDefault(require("./CardList"));
 
+var _Form = _interopRequireDefault(require("./Form"));
+
 require("./style.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -25908,15 +25954,35 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var testData = [{
+  name: "Dan Abramov",
+  avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4",
+  company: "@facebook"
+}, {
+  name: "Sophie Alpert",
+  avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4",
+  company: "Humu"
+}, {
+  name: "Sebastian Markbåge",
+  avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4",
+  company: "Facebook"
+}];
+
 var App =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      profiles: testData
+    };
+    return _this;
   }
 
   _createClass(App, [{
@@ -25924,7 +25990,9 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "header"
-      }, this.props.title), _react.default.createElement(_CardList.default, null));
+      }, this.props.title), _react.default.createElement(_Form.default, null), _react.default.createElement(_CardList.default, {
+        profiles: this.state.profiles
+      }));
     }
   }]);
 
@@ -25934,7 +26002,7 @@ function (_React$Component) {
 (0, _reactDom.render)(_react.default.createElement(App, {
   title: "The GitHub Cards App"
 }), document.getElementById("root"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./CardList":"CardList.js","./style.scss":"style.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./CardList":"CardList.js","./Form":"Form.js","./style.scss":"style.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -25962,7 +26030,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56998" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57618" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
