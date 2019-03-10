@@ -1,10 +1,17 @@
 import React from "react";
+import Axios from "axios";
+import "babel-polyfill";
 
 class Form extends React.Component {
-  userNameInput = React.createRef();
-  handleSubmit = event => {
+  state = { userName: "" };
+  // prettier-ignore
+  handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(this.userNameInput.current.value);
+    const resp = await Axios.get(
+      `https://api.github.com/users/${this.state.userName}`
+    );
+    this.props.onSubmit(resp.data);
+    this.setState({ userName: ''});
   };
   render() {
     return (
@@ -12,7 +19,8 @@ class Form extends React.Component {
         <input
           type="text"
           placeholder="Github username"
-          ref={this.userNameInput}
+          value={this.state.userName}
+          onChange={event => this.setState({ userName: event.target.value })}
           required
         />
         <button>Add card</button>
