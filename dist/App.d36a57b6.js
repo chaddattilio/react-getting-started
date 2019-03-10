@@ -25827,19 +25827,34 @@ function (_React$Component) {
   _inherits(Form, _React$Component);
 
   function Form() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    var _temp;
+
     _classCallCheck(this, Form);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Form).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Form)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.userNameInput = _react.default.createRef(), _this.handleSubmit = function (event) {
+      event.preventDefault();
+      console.log(_this.userNameInput.current.value);
+    }, _temp));
   }
 
   _createClass(Form, [{
     key: "render",
     value: function render() {
       return _react.default.createElement("form", {
-        action: ""
+        onSubmit: this.handleSubmit
       }, _react.default.createElement("input", {
         type: "text",
-        placeholder: "Github username"
+        placeholder: "Github username",
+        ref: this.userNameInput,
+        required: true
       }), _react.default.createElement("button", null, "Add card"));
     }
   }]);
@@ -26030,7 +26045,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57618" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65382" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
